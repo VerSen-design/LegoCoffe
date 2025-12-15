@@ -1,0 +1,1560 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Два пончика и чашка кофе — кофейня для LEGO-минифигурок</title>
+    <meta name="description"
+        content="Специализированная кофейня «Два пончика и чашка кофе» для LEGO-минифигурок, вдохновлённая Central Perk из сериала «Друзья». Учебный фан-проект, неофициальный сайт.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-bg: #fdf4e6;
+            --color-bg-alt: #f9e7d4;
+            --color-primary: #7b4b2a;
+            --color-primary-light: #a3653f;
+            --color-primary-dark: #55311a;
+            --color-accent: #f4a259;
+            --color-brick: #b55239;
+            --color-green: #2f6b4a;
+            --color-text: #3b2a22;
+            --color-muted: #9c7f6a;
+            --radius-card: 1.4rem;
+            --shadow-soft: 0 10px 25px rgba(0, 0, 0, 0.08);
+            --shadow-strong: 0 14px 35px rgba(0, 0, 0, 0.14);
+            --transition-base: 0.3s ease;
+            --header-height: 72px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: "Montserrat", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background: radial-gradient(circle at top, #fbe9d6 0, #fdf4e6 38%, #f9e7d4 100%);
+            color: var(--color-text);
+            line-height: 1.6;
+            font-size: 16px;
+            padding-top: var(--header-height);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        button {
+            font-family: inherit;
+            border: none;
+            background: none;
+            cursor: pointer;
+        }
+
+        :focus-visible {
+            outline: 2px solid var(--color-accent);
+            outline-offset: 3px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1120px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        section {
+            padding: 4rem 0;
+            scroll-margin-top: calc(var(--header-height) + 16px);
+        }
+
+        @media (min-width: 768px) {
+            section {
+                padding: 5rem 0;
+            }
+        }
+
+        .section__title {
+            font-size: 1.9rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-align: center;
+            color: var(--color-primary-dark);
+        }
+
+        .section__subtitle {
+            text-align: center;
+            max-width: 620px;
+            margin: 0 auto 2.5rem;
+            font-size: 0.98rem;
+            color: var(--color-muted);
+        }
+
+        .image-rounded {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 1.4rem;
+            object-fit: cover;
+        }
+
+        .image-hover {
+            transition: transform var(--transition-base), box-shadow var(--transition-base), filter var(--transition-base);
+        }
+
+        .image-hover:hover {
+            transform: scale(1.02);
+            box-shadow: 0 10px 24px rgba(0, 0, 0, 0.16);
+            filter: brightness(1.03);
+        }
+
+        /* HEADER & NAV */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(253, 244, 230, 0.98);
+            border-bottom: 1px solid rgba(123, 75, 42, 0.08);
+            height: var(--header-height);
+            display: flex;
+            align-items: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .header__inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1.5rem;
+        }
+
+        .logo {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            font-weight: 700;
+            font-size: 1.05rem;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            padding: 0.3rem 0.8rem;
+            border-radius: 999px;
+            background: linear-gradient(135deg, #f9e1c2, #f4c38f);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
+        }
+
+        .logo__icon {
+            width: 30px;
+            height: 30px;
+            border-radius: 999px;
+            background: radial-gradient(circle at 30% 30%, #ffdd9f 0, #f4a259 36%, #b55239 100%);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 1.05rem;
+        }
+
+        .logo__text-main {
+            color: var(--color-primary-dark);
+        }
+
+        .logo__text-sub {
+            display: block;
+            font-size: 0.6rem;
+            text-transform: none;
+            color: var(--color-muted);
+        }
+
+        .nav {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .nav__list {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+
+        .nav__link {
+            position: relative;
+            padding: 0.3rem 0;
+        }
+
+        .nav__link::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -0.1rem;
+            width: 0;
+            height: 2px;
+            border-radius: 10px;
+            background: linear-gradient(90deg, var(--color-accent), var(--color-green));
+            transition: width var(--transition-base);
+        }
+
+        .nav__link:hover::after {
+            width: 100%;
+        }
+
+        .nav__link:hover {
+            color: var(--color-primary);
+        }
+
+        .nav__toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 5px;
+            width: 38px;
+            height: 38px;
+            border-radius: 999px;
+            border: 1px solid rgba(123, 75, 42, 0.2);
+            background: rgba(249, 231, 212, 0.9);
+            transition: background var(--transition-base), box-shadow var(--transition-base), transform var(--transition-base);
+        }
+
+        .nav__toggle span {
+            width: 18px;
+            height: 2px;
+            border-radius: 999px;
+            background: var(--color-primary-dark);
+            transition: transform var(--transition-base), opacity var(--transition-base), width var(--transition-base);
+        }
+
+        .nav__toggle:hover {
+            background: #f4c38f;
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+            transform: translateY(-1px);
+        }
+
+        .nav__toggle--open span:nth-child(1) {
+            transform: translateY(4px) rotate(45deg);
+            width: 20px;
+        }
+
+        .nav__toggle--open span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .nav__toggle--open span:nth-child(3) {
+            transform: translateY(-4px) rotate(-45deg);
+            width: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .nav__toggle {
+                display: inline-flex;
+            }
+
+            .nav__list {
+                position: absolute;
+                right: 1.5rem;
+                top: calc(var(--header-height) - 0.5rem);
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0;
+                background: rgba(253, 244, 230, 0.98);
+                border-radius: 1rem;
+                padding: 0.8rem 1rem;
+                box-shadow: var(--shadow-soft);
+                transform-origin: top right;
+                transform: scale(0.9) translateY(-10px);
+                opacity: 0;
+                visibility: hidden;
+                transition: opacity var(--transition-base), transform var(--transition-base), visibility var(--transition-base);
+            }
+
+            .nav__list--open {
+                opacity: 1;
+                visibility: visible;
+                transform: scale(1) translateY(0);
+            }
+
+            .nav__item {
+                width: 100%;
+            }
+
+            .nav__link {
+                display: block;
+                width: 100%;
+                padding: 0.5rem 0.2rem;
+            }
+        }
+
+        /* HERO */
+        .hero {
+            padding-top: 3rem;
+        }
+
+        .hero__inner {
+            display: flex;
+            flex-direction: column-reverse;
+            align-items: center;
+            gap: 2.2rem;
+        }
+
+        @media (min-width: 768px) {
+            .hero__inner {
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-between;
+                gap: 3.5rem;
+            }
+        }
+
+        .hero__content {
+            max-width: 520px;
+        }
+
+        .hero__eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+            padding: 0.18rem 0.7rem;
+            border-radius: 999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.09em;
+            text-transform: uppercase;
+            background: rgba(46, 106, 74, 0.08);
+            color: var(--color-green);
+            margin-bottom: 0.9rem;
+        }
+
+        .hero__eyebrow-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 999px;
+            background: var(--color-accent);
+        }
+
+        .hero__title {
+            font-size: 2.1rem;
+            line-height: 1.2;
+            margin-bottom: 0.9rem;
+            color: var(--color-primary-dark);
+        }
+
+        @media (min-width: 768px) {
+            .hero__title {
+                font-size: 2.6rem;
+            }
+        }
+
+        .hero__title span {
+            color: var(--color-accent);
+        }
+
+        .hero__text {
+            font-size: 0.98rem;
+            margin-bottom: 1.4rem;
+            color: var(--color-muted);
+        }
+
+        .hero__meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.2rem;
+            align-items: center;
+        }
+
+        .hero__buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+        }
+
+        .hero__note {
+            font-size: 0.8rem;
+            color: var(--color-muted);
+            max-width: 260px;
+        }
+
+        .hero__note strong {
+            color: var(--color-primary);
+            font-weight: 600;
+        }
+
+        .hero__media {
+            position: relative;
+            width: 100%;
+            max-width: 420px;
+        }
+
+        .hero__card {
+            background: linear-gradient(145deg, #ffffff, #fbe4ca);
+            border-radius: 2rem;
+            padding: 1.2rem;
+            box-shadow: var(--shadow-strong);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero__tag {
+            position: absolute;
+            top: 1rem;
+            right: 1.2rem;
+            padding: 0.15rem 0.7rem;
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: #ffffff;
+            border-radius: 999px;
+            background: linear-gradient(135deg, var(--color-brick), var(--color-green));
+        }
+
+        .hero__image-wrapper {
+            border-radius: 1.4rem;
+            overflow: hidden;
+            border: 3px solid rgba(181, 82, 57, 0.12);
+        }
+
+        .hero__image {
+            width: 100%;
+            height: auto;
+            display: block;
+            transform: scale(1.02);
+            transform-origin: center;
+            transition: transform 4s ease-out;
+        }
+
+        .hero__card:hover .hero__image {
+            transform: scale(1.05);
+        }
+
+        .hero__lego-strip {
+            margin-top: 0.9rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.6rem;
+            font-size: 0.75rem;
+            color: var(--color-muted);
+        }
+
+        .hero__lego-studs {
+            display: flex;
+            gap: 0.4rem;
+        }
+
+        .hero__lego-stud {
+            width: 16px;
+            height: 16px;
+            border-radius: 999px;
+            background: radial-gradient(circle at 30% 30%, #ffe3b5 0, #f4a259 38%, #b55239 100%);
+            box-shadow: 0 2px 0 rgba(123, 75, 42, 0.45);
+        }
+
+        .hero__lego-caption {
+            text-align: right;
+        }
+
+        /* BUTTONS */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.7rem 1.4rem;
+            border-radius: 999px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            letter-spacing: 0.03em;
+            text-transform: uppercase;
+            border: 1px solid transparent;
+            transition: background var(--transition-base), color var(--transition-base), box-shadow var(--transition-base), transform var(--transition-base), border-color var(--transition-base);
+            white-space: nowrap;
+        }
+
+        .btn--primary {
+            background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+            color: #ffffff;
+            box-shadow: 0 10px 20px rgba(181, 82, 57, 0.35);
+        }
+
+        .btn--primary:hover {
+            transform: translateY(-2px) scale(1.02);
+            box-shadow: 0 14px 26px rgba(123, 75, 42, 0.45);
+            filter: brightness(1.04);
+        }
+
+        .btn--outline {
+            background: rgba(253, 244, 230, 0.6);
+            border-color: rgba(123, 75, 42, 0.4);
+            color: var(--color-primary-dark);
+        }
+
+        .btn--outline:hover {
+            background: #f4c38f;
+            border-color: transparent;
+            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12);
+            transform: translateY(-2px);
+        }
+
+        /* ABOUT */
+        .about {
+            background: linear-gradient(180deg, rgba(249, 231, 212, 0.76), rgba(253, 244, 230, 1));
+        }
+
+        .about__grid {
+            display: grid;
+            gap: 2.2rem;
+        }
+
+        @media (min-width: 880px) {
+            .about__grid {
+                grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+                align-items: center;
+            }
+        }
+
+        .about__text-block {
+            font-size: 0.96rem;
+            color: var(--color-text);
+        }
+
+        .about__text-block p+p {
+            margin-top: 0.8rem;
+        }
+
+        .about__disclaimer {
+            margin-top: 1rem;
+            padding: 0.8rem 1rem;
+            border-radius: 1rem;
+            background: rgba(46, 107, 74, 0.06);
+            font-size: 0.8rem;
+            color: var(--color-muted);
+        }
+
+        .about__disclaimer strong {
+            font-weight: 600;
+            color: var(--color-primary);
+        }
+
+        .about__photo-card {
+            background: #fffdf8;
+            border-radius: var(--radius-card);
+            padding: 1rem;
+            box-shadow: var(--shadow-soft);
+            border: 1px solid rgba(181, 82, 57, 0.1);
+        }
+
+        .about__photo-wrapper {
+            border-radius: 1.2rem;
+            overflow: hidden;
+            border: 3px dashed rgba(46, 107, 74, 0.2);
+        }
+
+        .about__photo-caption {
+            margin-top: 0.7rem;
+            font-size: 0.8rem;
+            color: var(--color-muted);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.6rem;
+        }
+
+        .about__badge {
+            padding: 0.25rem 0.7rem;
+            border-radius: 999px;
+            font-size: 0.72rem;
+            background: rgba(181, 82, 57, 0.09);
+            color: var(--color-primary);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+        }
+
+        .about__mini-shot {
+            margin-top: 1rem;
+            display: grid;
+            grid-template-columns: auto minmax(0, 1fr);
+            gap: 0.75rem;
+            align-items: center;
+            font-size: 0.85rem;
+            color: var(--color-muted);
+        }
+
+        .about__mini-shot-image {
+            width: 84px;
+            height: 84px;
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);
+        }
+
+        .about__mini-shot-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transform: scale(1.03);
+            transition: transform var(--transition-base);
+        }
+
+        .about__mini-shot:hover img {
+            transform: scale(1.08);
+        }
+
+        .features {
+            margin-top: 2.4rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.4rem;
+        }
+
+        .feature-card {
+            position: relative;
+            background: #ffffff;
+            border-radius: var(--radius-card);
+            padding: 1.1rem 1rem 1rem;
+            box-shadow: var(--shadow-soft);
+            border: 1px solid rgba(123, 75, 42, 0.08);
+            transition: transform var(--transition-base), box-shadow var(--transition-base), background var(--transition-base), border-color var(--transition-base);
+        }
+
+        .feature-card::before {
+            content: "";
+            position: absolute;
+            top: 0.7rem;
+            left: 1.1rem;
+            width: 44px;
+            height: 18px;
+            border-radius: 999px;
+            background: radial-gradient(circle at 30% 30%, #ffe3b5 0, #f4a259 40%, #b55239 100%);
+            box-shadow: 0 3px 0 rgba(123, 75, 42, 0.4);
+            opacity: 0.95;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-strong);
+            background: #fffaf3;
+            border-color: rgba(123, 75, 42, 0.2);
+        }
+
+        .feature-card__icon {
+            font-size: 1.6rem;
+            margin-bottom: 0.2rem;
+        }
+
+        .feature-card__title {
+            margin-top: 1.5rem;
+            font-weight: 600;
+            font-size: 1rem;
+            margin-bottom: 0.3rem;
+            color: var(--color-primary-dark);
+        }
+
+        .feature-card__text {
+            font-size: 0.88rem;
+            color: var(--color-muted);
+        }
+
+        /* MENU */
+        .menu {
+            position: relative;
+        }
+
+        .menu__bg {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            background-image:
+                radial-gradient(circle at 10% 20%, rgba(244, 162, 89, 0.14) 0, transparent 42%),
+                radial-gradient(circle at 80% 80%, rgba(46, 107, 74, 0.14) 0, transparent 50%);
+            opacity: 0.85;
+        }
+
+        .menu__content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .menu__grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.4rem;
+            margin-top: 1rem;
+        }
+
+        .menu-card {
+            background: #fffdf7;
+            border-radius: var(--radius-card);
+            padding: 1.1rem 1.1rem 1rem;
+            box-shadow: var(--shadow-soft);
+            border: 1px solid rgba(123, 75, 42, 0.08);
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+            position: relative;
+            overflow: hidden;
+            transition: transform var(--transition-base), box-shadow var(--transition-base), border-color var(--transition-base), background var(--transition-base);
+        }
+
+        .menu-card::after {
+            content: "";
+            position: absolute;
+            inset: auto -40px -60px;
+            height: 80px;
+            background: linear-gradient(90deg, rgba(244, 162, 89, 0.12), rgba(46, 107, 74, 0.12));
+            transform: translateY(100%);
+            transition: transform var(--transition-base);
+        }
+
+        .menu-card__image-wrapper {
+            margin: -0.2rem -0.2rem 0.7rem;
+            border-radius: 1.2rem;
+            overflow: hidden;
+            min-height: 150px;
+            background: linear-gradient(135deg, rgba(244, 162, 89, 0.32), rgba(181, 82, 57, 0.26));
+            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.14);
+        }
+
+        .menu-card__image {
+            width: 100%;
+            height: 100%;
+            max-height: 190px;
+            object-fit: cover;
+            display: block;
+            transform: scale(1.04);
+            transition: transform var(--transition-base), filter var(--transition-base);
+        }
+
+        .menu-card__body {
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+            flex: 1;
+        }
+
+        .menu-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-strong);
+            border-color: rgba(123, 75, 42, 0.26);
+            background: #fffaf3;
+        }
+
+        .menu-card:hover::after {
+            transform: translateY(0);
+        }
+
+        .menu-card:hover .menu-card__image {
+            transform: scale(1.08);
+            filter: brightness(1.05);
+        }
+
+        .menu-card__header {
+            display: flex;
+            justify-content: space-between;
+            gap: 0.6rem;
+            align-items: baseline;
+            margin-bottom: 0.2rem;
+        }
+
+        .menu-card__title {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--color-primary-dark);
+        }
+
+        .menu-card__emoji {
+            font-size: 1.4rem;
+        }
+
+        .menu-card__desc {
+            font-size: 0.88rem;
+            color: var(--color-muted);
+        }
+
+        .menu-card__meta {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 0.5rem;
+            font-size: 0.85rem;
+        }
+
+        .menu-card__price {
+            font-weight: 700;
+            color: var(--color-primary);
+        }
+
+        .menu-card__tag {
+            padding: 0.18rem 0.7rem;
+            border-radius: 999px;
+            background: rgba(46, 107, 74, 0.1);
+            color: var(--color-green);
+            font-size: 0.76rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        /* GALLERY */
+        .gallery {
+            background: linear-gradient(180deg, rgba(253, 244, 230, 0.95), rgba(249, 231, 212, 0.9));
+        }
+
+        .gallery__grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.3rem;
+        }
+
+        .gallery__item {
+            background: #ffffff;
+            border-radius: var(--radius-card);
+            padding: 0.9rem;
+            box-shadow: var(--shadow-soft);
+            border: 1px solid rgba(123, 75, 42, 0.08);
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .gallery__image-wrapper {
+            border-radius: 1.1rem;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .gallery__image {
+            width: 100%;
+            height: 190px;
+            object-fit: cover;
+            display: block;
+            transform: scale(1.03);
+            transition: transform var(--transition-base), filter var(--transition-base);
+        }
+
+        .gallery__item:hover .gallery__image {
+            transform: scale(1.08);
+            filter: brightness(1.05);
+        }
+
+        .gallery__caption {
+            font-size: 0.86rem;
+            color: var(--color-muted);
+        }
+
+        /* CONTACTS */
+        .contacts {
+            background: linear-gradient(180deg, rgba(253, 244, 230, 1), rgba(249, 231, 212, 0.85));
+        }
+
+        .contacts__grid {
+            display: grid;
+            gap: 2rem;
+        }
+
+        @media (min-width: 820px) {
+            .contacts__grid {
+                grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+                align-items: flex-start;
+            }
+        }
+
+        .contacts__info {
+            font-size: 0.95rem;
+        }
+
+        .contacts__info address {
+            font-style: normal;
+            background: #ffffff;
+            padding: 1.1rem 1.2rem;
+            border-radius: var(--radius-card);
+            box-shadow: var(--shadow-soft);
+            border: 1px solid rgba(123, 75, 42, 0.08);
+        }
+
+        .contacts__list {
+            display: grid;
+            gap: 0.55rem;
+            margin-top: 0.4rem;
+        }
+
+        .contacts__item-label {
+            font-size: 0.82rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--color-muted);
+            margin-bottom: 0.08rem;
+        }
+
+        .contacts__item-value {
+            font-size: 0.95rem;
+            color: var(--color-primary-dark);
+        }
+
+        .contacts__item-value a {
+            text-decoration: underline;
+            text-decoration-thickness: 1.5px;
+            text-decoration-color: rgba(123, 75, 42, 0.5);
+            text-underline-offset: 3px;
+            transition: color var(--transition-base), text-decoration-color var(--transition-base);
+        }
+
+        .contacts__item-value a:hover {
+            color: var(--color-primary);
+            text-decoration-color: var(--color-accent);
+        }
+
+        .contacts__note {
+            margin-top: 0.9rem;
+            font-size: 0.82rem;
+            color: var(--color-muted);
+        }
+
+        .contacts__map-card {
+            background: #fffdf9;
+            border-radius: var(--radius-card);
+            padding: 1rem;
+            box-shadow: var(--shadow-soft);
+            border: 1px solid rgba(123, 75, 42, 0.08);
+        }
+
+        .contacts__map-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.6rem;
+            margin-bottom: 0.7rem;
+            font-size: 0.85rem;
+        }
+
+        .contacts__map-title {
+            font-weight: 600;
+            color: var(--color-primary-dark);
+        }
+
+        .contacts__map-tag {
+            padding: 0.2rem 0.7rem;
+            border-radius: 999px;
+            font-size: 0.72rem;
+            background: rgba(46, 107, 74, 0.1);
+            color: var(--color-green);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            font-weight: 600;
+        }
+
+        .contacts__map-placeholder {
+            border-radius: 1rem;
+            background: linear-gradient(135deg, #f4c38f, #f9e1c2);
+            min-height: 180px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 1rem;
+            color: var(--color-primary-dark);
+            font-size: 0.88rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contacts__map-placeholder::before,
+        .contacts__map-placeholder::after {
+            content: "";
+            position: absolute;
+            border-radius: 999px;
+            border: 2px dashed rgba(123, 75, 42, 0.33);
+        }
+
+        .contacts__map-placeholder::before {
+            width: 80px;
+            height: 80px;
+            top: -25px;
+            left: 18%;
+        }
+
+        .contacts__map-placeholder::after {
+            width: 120px;
+            height: 120px;
+            bottom: -40px;
+            right: 8%;
+        }
+
+        .contacts__socials {
+            margin-top: 1.1rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.7rem;
+        }
+
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+            padding: 0.45rem 0.85rem;
+            border-radius: 999px;
+            font-size: 0.86rem;
+            background: rgba(123, 75, 42, 0.08);
+            color: var(--color-primary-dark);
+            transition: background var(--transition-base), transform var(--transition-base), box-shadow var(--transition-base);
+        }
+
+        .social-link span {
+            font-size: 1rem;
+        }
+
+        .social-link:hover {
+            background: #f4c38f;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.14);
+        }
+
+        /* FOOTER */
+        .footer {
+            padding: 1.8rem 0 2.1rem;
+            border-top: 1px solid rgba(123, 75, 42, 0.16);
+            background: #2b1b12;
+            color: #fbe4ca;
+            font-size: 0.82rem;
+        }
+
+        .footer__inner {
+            display: flex;
+            flex-direction: column;
+            gap: 0.7rem;
+        }
+
+        @media (min-width: 640px) {
+            .footer__inner {
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-between;
+            }
+        }
+
+        .footer__brand {
+            font-weight: 600;
+        }
+
+        .footer__legal {
+            max-width: 520px;
+            color: #d6b79b;
+        }
+
+        .footer__legal span {
+            white-space: nowrap;
+        }
+
+        /* UTILITIES */
+        .text-center {
+            text-align: center;
+        }
+
+        @media (max-width: 480px) {
+            .hero__title {
+                font-size: 2rem;
+            }
+
+            .hero__buttons {
+                width: 100%;
+            }
+
+            .btn {
+                flex: 1 1 auto;
+                justify-content: center;
+            }
+
+            .about__mini-shot {
+                grid-template-columns: minmax(0, 1fr);
+            }
+
+            .about__mini-shot-image {
+                width: 100%;
+                max-width: 220px;
+                height: 120px;
+                margin: 0 auto;
+            }
+
+            .gallery__image {
+                height: 170px;
+            }
+        }
+    </style>
+</head>
+
+<body id="top">
+    <header class="header">
+        <div class="container header__inner">
+            <a href="#top" class="logo">
+                <span class="logo__icon">☕</span>
+                <span>
+                    <span class="logo__text-main">Два пончика и чашка кофе</span>
+                    <span class="logo__text-sub">кофейня для LEGO-минифигурок</span>
+                </span>
+            </a>
+            <nav class="nav" aria-label="Основная навигация">
+                <button class="nav__toggle" aria-label="Открыть меню" aria-expanded="false" aria-controls="main-menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <ul class="nav__list" id="main-menu">
+                    <li class="nav__item"><a class="nav__link" href="#home">Главная</a></li>
+                    <li class="nav__item"><a class="nav__link" href="#about">О кофейне</a></li>
+                    <li class="nav__item"><a class="nav__link" href="#menu">Меню</a></li>
+                    <li class="nav__item"><a class="nav__link" href="#contacts">Контакты</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- HERO -->
+        <section class="hero" id="home" aria-labelledby="hero-title">
+            <div class="container hero__inner">
+                <div class="hero__content">
+                    <div class="hero__eyebrow">
+                        <span class="hero__eyebrow-dot"></span>
+                        <span>Специализированная LEGO-кофейня</span>
+                    </div>
+                    <h1 class="hero__title" id="hero-title">
+                        Central Perk <span>для LEGO-героев</span>
+                    </h1>
+                    <p class="hero__text">
+                        Уютный уголок, где минифигурки отдыхают после интенсивных съёмок, обсуждают новые эпизоды и
+                        делят
+                        последние два пончика на всей студии. Здесь всегда горячий капучино, тёплые кирпичики и немного
+                        ностальгии по «Друзьям».
+                    </p>
+                    <div class="hero__meta">
+                        <div class="hero__buttons">
+                            <a href="#menu" class="btn btn--primary">Посмотреть меню</a>
+                            <a href="#contacts" class="btn btn--outline">Забронировать столик</a>
+                        </div>
+                        <p class="hero__note">
+                            <strong>Формат mini:</strong> столики рассчитаны на компании до шести минифигурок и одного
+                            случайного динозавра.
+                        </p>
+                    </div>
+                </div>
+                <div class="hero__media">
+                    <div class="hero__card">
+                        <span class="hero__tag">Сцена 5 · Дубль 2</span>
+                        <div class="hero__image-wrapper">
+                            <img src="images/hero-couch.jpg"
+                                alt="LEGO-герои на оранжевом диване в кофейне с пиццей и кружкой кофе"
+                                class="hero__image">
+                        </div>
+                        <div class="hero__lego-strip">
+                            <div class="hero__lego-studs">
+                                <span class="hero__lego-stud"></span>
+                                <span class="hero__lego-stud"></span>
+                                <span class="hero__lego-stud"></span>
+                            </div>
+                            <div class="hero__lego-caption">
+                                <div style="font-size:0.78rem;">Диван для главных героев</div>
+                                <div style="font-size:0.74rem;color:var(--color-muted);">Лучшее место для двух пончиков
+                                    и чашки кофе</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ABOUT -->
+        <section class="about" id="about">
+            <div class="container">
+                <h2 class="section__title">О кофейне</h2>
+                <p class="section__subtitle">
+                    Мы придумали место, где любимые персонажи в формате минифигурок могут наконец-то спокойно
+                    допить свой кофе, не опасаясь, что гигантский человек случайно заденет стол локтем.
+                </p>
+
+                <div class="about__grid">
+                    <div class="about__text-block">
+                        <p>
+                            «Два пончика и чашка кофе» — уютная кофейня, созданная специально для LEGO-минифигурок.
+                            Интерьер вдохновлён атмосферой легендарного кафе Central Perk, а барная стойка идеально
+                            выстроена под размер стандартного кирпичика.
+                        </p>
+                        <p>
+                            Здесь встречаются герои разных серий, обсуждают сценарии, репетируют реплики и спорят,
+                            чья кружка сегодня будет стоять ближе к дивану. Мы верим, что даже маленьким персонажам
+                            нужны большие традиции: любимый столик, фирменный напиток и пончик «как всегда».
+                        </p>
+                        <p>
+                            Проект создан в учебных целях и существует только в воображении и на этой странице.
+                            Но если вы вдруг улыбнулись, представляя минифигурок за чашкой капучино — значит, всё
+                            получилось.
+                        </p>
+
+                        <div class="about__disclaimer">
+                            <strong>Важно:</strong> этот сайт является учебным фан-проектом и <strong>не является
+                                официальным сайтом</strong> компаний LEGO Group, Warner Bros. или создателей сериала
+                            «Друзья».
+                            Все упоминания используются с уважением к правообладателям.
+                        </div>
+
+                        <div class="features" aria-label="Особенности кофейни">
+                            <article class="feature-card">
+                                <div class="feature-card__icon">☕</div>
+                                <h3 class="feature-card__title">Специальные мини-чашки</h3>
+                                <p class="feature-card__text">
+                                    Каждая кружка рассчитана на точное «количество кофе» для одной минифигурки —
+                                    ни каплей больше, чтобы не залить студийный пол.
+                                </p>
+                            </article>
+                            <article class="feature-card">
+                                <div class="feature-card__icon">🍩</div>
+                                <h3 class="feature-card__title">Пончики в один стад</h3>
+                                <p class="feature-card__text">
+                                    Фирменные пончики размером ровно в один LEGO-стад — удобно держать, делить и даже
+                                    крепить к плиткам для фотосессий.
+                                </p>
+                            </article>
+                            <article class="feature-card">
+                                <div class="feature-card__icon">🎬</div>
+                                <h3 class="feature-card__title">Место для всей компании</h3>
+                                <p class="feature-card__text">
+                                    Диван, кресла, табуретки у стойки — хватает места и для всей компании «Друзей»,
+                                    и для пары гостей из соседних тематических наборов.
+                                </p>
+                            </article>
+                        </div>
+                    </div>
+
+                    <aside class="about__photo-card">
+                        <div class="about__photo-wrapper">
+                            <img src="images/friends-group.jpg"
+                                alt="Все шесть LEGO-минифигурок друзей на фоне кофейни Central Perk"
+                                class="image-rounded image-hover">
+                        </div>
+                        <div class="about__photo-caption">
+                            <span>Команда друзей в полном составе на своём любимом диване.</span>
+                            <span class="about__badge">Учебный проект</span>
+                        </div>
+
+                        <div class="about__mini-shot">
+                            <div class="about__mini-shot-image">
+                                <img src="images/phoebe-piano.jpg"
+                                    alt="Минифигурка Фиби у пианино на фоне окна Central Perk">
+                            </div>
+                            <div class="about__mini-shot-text">
+                                По вечерам в кофейне звучат мини-концерты: Фиби у пианино, мягкий свет из витрины и
+                                тихий гул разговоров минифигурок создают настоящую студийную магию.
+                            </div>
+                        </div>
+                    </aside>
+                </div>
+            </div>
+        </section>
+
+        <!-- MENU -->
+        <section class="menu" id="menu">
+            <div class="menu__bg" aria-hidden="true"></div>
+            <div class="container menu__content">
+                <h2 class="section__title">Меню для минифигурок</h2>
+                <p class="section__subtitle">
+                    Каждое название — маленькая отсылка, а каждый напиток — повод пересмотреть любимую серию.
+                    Цены указаны в условных «кирпичиках» — всё честно и по-LEGO-вски.
+                </p>
+
+                <div class="menu__grid" aria-label="Фирменные напитки">
+                    <article class="menu-card">
+                        <div class="menu-card__image-wrapper">
+                            <img src="images/joey-chandler-pizza.jpg"
+                                alt="LEGO-минифигурки Джоуи и Чендлера с пиццей за столиком кофейни"
+                                class="menu-card__image">
+                        </div>
+                        <div class="menu-card__body">
+                            <div class="menu-card__header">
+                                <h3 class="menu-card__title">Капучино Чендлера</h3>
+                                <span class="menu-card__emoji">☕</span>
+                            </div>
+                            <p class="menu-card__desc">
+                                Классический капучино с плотной кремовой пенкой, достаточно крепкий, чтобы выдержать
+                                ещё один рабочий день в офисе статистики шуток.
+                            </p>
+                            <div class="menu-card__meta">
+                                <span class="menu-card__price">5 кирпичиков</span>
+                                <span class="menu-card__tag">Выбор дивана</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="menu-card">
+                        <div class="menu-card__image-wrapper">
+                            <img src="images/rachel-service.jpg"
+                                alt="Минифигурка Рейчел у барной стойки с табличкой SERVICE в кофейне"
+                                class="menu-card__image">
+                        </div>
+                        <div class="menu-card__body">
+                            <div class="menu-card__header">
+                                <h3 class="menu-card__title">Латте Рейчел</h3>
+                                <span class="menu-card__emoji">🥛</span>
+                            </div>
+                            <p class="menu-card__desc">
+                                Мягкий латте с карамельным сиропом — идеален для тех, кто только начинает знакомство
+                                с кофе и новой взрослой жизнью в большом городе.
+                            </p>
+                            <div class="menu-card__meta">
+                                <span class="menu-card__price">4 кирпичика</span>
+                                <span class="menu-card__tag">Лёгкая сладость</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="menu-card">
+                        <div class="menu-card__image-wrapper">
+                            <img src="images/gunther-close.jpg" alt="Бариста LEGO за стойкой кофейни крупным планом"
+                                class="menu-card__image">
+                        </div>
+                        <div class="menu-card__body">
+                            <div class="menu-card__header">
+                                <h3 class="menu-card__title">Эспрессо Росса</h3>
+                                <span class="menu-card__emoji">🧪</span>
+                            </div>
+                            <p class="menu-card__desc">
+                                Двойной эспрессо без компромиссов — для палеонтологов, сценаристов и всех,
+                                кто внезапно решил пересобрать всю квартиру из кирпичиков.
+                            </p>
+                            <div class="menu-card__meta">
+                                <span class="menu-card__price">6 кирпичиков</span>
+                                <span class="menu-card__tag">Очень крепкий</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="menu-card">
+                        <div class="menu-card__image-wrapper">
+                            <img src="images/phoebe-piano.jpg"
+                                alt="Минифигурка Фиби с гитарой и пианино в кофейне Central Perk"
+                                class="menu-card__image">
+                        </div>
+                        <div class="menu-card__body">
+                            <div class="menu-card__header">
+                                <h3 class="menu-card__title">Мокка Фиби</h3>
+                                <span class="menu-card__emoji">🎸</span>
+                            </div>
+                            <p class="menu-card__desc">
+                                Шоколадный мокка с лёгкой ноткой корицы — немножко странный, очень тёплый и идеально
+                                подходит для импровизаций под гитару.
+                            </p>
+                            <div class="menu-card__meta">
+                                <span class="menu-card__price">5 кирпичиков</span>
+                                <span class="menu-card__tag">С ноткой шоколада</span>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- GALLERY -->
+        <section class="gallery" id="gallery">
+            <div class="container">
+                <h2 class="section__title">Кадры из кофейни</h2>
+                <p class="section__subtitle">
+                    Немного закулисья: кто-то подаёт заказ, кто-то нажимает на клавиши пианино,
+                    а кто-то незаметно следит за стойкой и кофемашиной.
+                </p>
+
+                <div class="gallery__grid">
+                    <figure class="gallery__item">
+                        <div class="gallery__image-wrapper">
+                            <img src="images/phoebe-piano.jpg" alt="Фиби у пианино в кофейне Central Perk"
+                                class="gallery__image">
+                        </div>
+                        <figcaption class="gallery__caption">
+                            Вечерняя музыкальная пауза: минифигурка Фиби играет на пианино для постоянных гостей.
+                        </figcaption>
+                    </figure>
+
+                    <figure class="gallery__item">
+                        <div class="gallery__image-wrapper">
+                            <img src="images/rachel-service.jpg" alt="Рейчел за барной стойкой с табличкой SERVICE"
+                                class="gallery__image">
+                        </div>
+                        <figcaption class="gallery__caption">
+                            Рейчел следит за заказами: стрелка «SERVICE» всегда указывает на хорошее настроение и свежий
+                            кофе.
+                        </figcaption>
+                    </figure>
+
+                    <figure class="gallery__item">
+                        <div class="gallery__image-wrapper">
+                            <img src="images/gunther-close.jpg" alt="Бариста Гюнтер за стойкой крупным планом"
+                                class="gallery__image">
+                        </div>
+                        <figcaption class="gallery__caption">
+                            Гюнтер за стойкой — хранитель кофейных зёрен и всех секретов постоянных гостей.
+                        </figcaption>
+                    </figure>
+
+                    <figure class="gallery__item">
+                        <div class="gallery__image-wrapper">
+                            <img src="images/gunther-wide.jpg"
+                                alt="Барная стойка с кофемашиной, столиками и минифигурками в кофейне"
+                                class="gallery__image">
+                        </div>
+                        <figcaption class="gallery__caption">
+                            Общий вид кофейни: стойка, кофемашина, столики и достаточное количество стульев для всей
+                            компании «Друзей».
+                        </figcaption>
+                    </figure>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACTS -->
+        <section class="contacts" id="contacts">
+            <div class="container">
+                <h2 class="section__title">Контакты</h2>
+                <p class="section__subtitle">
+                    Кофейня расположена прямо на съёмочной площадке, между полкой с наборами и коробкой с запасными
+                    деталями.
+                    Забронировать столик можно голосом сценариста или обычным письмом.
+                </p>
+
+                <div class="contacts__grid">
+                    <div class="contacts__info">
+                        <address>
+                            <div class="contacts__list">
+                                <div>
+                                    <div class="contacts__item-label">Адрес</div>
+                                    <div class="contacts__item-value">
+                                        Город LEGO, студия Central Perk,<br>
+                                        полка 3, уровень 2, между диваном и софтом для подсчёта шуток.
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="contacts__item-label">Часы работы</div>
+                                    <div class="contacts__item-value">
+                                        Пн–Вс: 10:00–22:00<br>
+                                        <span style="font-size:0.86rem;color:var(--color-muted);">
+                                            (по времени съёмочной площадки и вдохновения сценаристов)
+                                        </span>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="contacts__item-label">Телефон</div>
+                                    <div class="contacts__item-value">
+                                        <a href="tel:+70001234567">+7 (000) 123-45-67</a>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="contacts__item-label">E-mail</div>
+                                    <div class="contacts__item-value">
+                                        <a
+                                            href="mailto:minifig.coffee@studios.example">minifig.coffee@studios.example</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </address>
+                        <p class="contacts__note">
+                            Бронирование столиков для целой компании минифигурок возможно только при условии,
+                            что кто-нибудь готов сесть на легендарный диван и терпеливо ждать остальных.
+                        </p>
+                        <div class="contacts__socials" aria-label="Соцсети кофейни">
+                            <a href="#" class="social-link">
+                                <span>📸</span><span>Мини-Нельзяграм</span>
+                            </a>
+                            <a href="#" class="social-link">
+                                <span>🎬</span><span>Закулисье студии</span>
+                            </a>
+                            <a href="#" class="social-link">
+                                <span>🧱</span><span>Фан-клуб LEGO</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="contacts__map-card">
+                        <div class="contacts__map-header">
+                            <span class="contacts__map-title">Как нас найти</span>
+                            <span class="contacts__map-tag">LEGO-карта</span>
+                        </div>
+                        <div class="contacts__map-placeholder">
+                            Представьте карту Нью-Йорка в стиле LEGO: маленький зелёный прямоугольник —
+                            наш парк, оранжевый кирпичик — вход в студию, а тёплый коричневый блок
+                            с подсветкой — это и есть «Два пончика и чашка кофе».
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container footer__inner">
+            <div class="footer__brand">
+                © <span id="current-year"></span> «Два пончика и чашка кофе».
+            </div>
+            <div class="footer__legal">
+                Учебный проект, неофициальный фан-сайт. LEGO® и FRIENDS™ — зарегистрированные товарные знаки
+                их правообладателей и <span>не связаны</span> с данной страницей. Автор: студент виртуальной студии
+                мини-дизайна.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        (function () {
+            const navToggle = document.querySelector('.nav__toggle');
+            const navList = document.querySelector('.nav__list');
+            const navLinks = document.querySelectorAll('.nav__link');
+            const yearSpan = document.getElementById('current-year');
+
+            if (yearSpan) {
+                yearSpan.textContent = new Date().getFullYear();
+            }
+
+            function setNavExpanded(isExpanded) {
+                if (!navToggle) return;
+                navToggle.setAttribute('aria-expanded', String(isExpanded));
+            }
+
+            if (navToggle && navList) {
+                navToggle.addEventListener('click', function () {
+                    const isOpen = navList.classList.toggle('nav__list--open');
+                    navToggle.classList.toggle('nav__toggle--open', isOpen);
+                    setNavExpanded(isOpen);
+                });
+            }
+
+            navLinks.forEach(function (link) {
+                link.addEventListener('click', function () {
+                    if (window.innerWidth <= 768 && navList.classList.contains('nav__list--open')) {
+                        navList.classList.remove('nav__list--open');
+                        if (navToggle) {
+                            navToggle.classList.remove('nav__toggle--open');
+                            setNavExpanded(false);
+                        }
+                    }
+                });
+            });
+        })();
+    </script>
+</body>
+
+</html>
